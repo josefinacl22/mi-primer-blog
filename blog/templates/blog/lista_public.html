@@ -1,6 +1,12 @@
+{% load static %}
 <html>
 <head>
     <title>Blog de Josefina</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="//fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet" type = "text/css">
+
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     <style>
         .filtro-usuarios {
             margin: 15px 0;
@@ -24,13 +30,13 @@
             color: #666;
         }
 	h1 a {
-    		color: black; /* Cambia el color del enlace a negro */
-    		text-decoration: none; /* Opcional: elimina el subrayado del enlace */
+    		color: black; 
+    		text-decoration: none; 
 	}
     </style>
 </head>
 <body>
-    <div style="background: #feddfe;">
+    <div class="page-header">
         <h1><a href="/">Blog de Josefina</a></h1>
     </div>
     <!-- Filtro por usuario usando enlaces -->
@@ -54,12 +60,21 @@
    <!-- Lista de publicaciones -->
 
    <div>
-    {% for publicacion in publicaciones %}
-    <p>Publicado: {{ publicacion.fecha_publicacion }} por autor/a: {{ publicacion.autor.username }} </p>
-    <h2> <a href=""> {{publicacion.titulo}} </a> </h2>
-    <p> {{ publicacion.texto|linebreaksbr }} </p>
-    <hr>    
-    {% endfor %}
-   </div>
+   <div class="content container">
+	<div class="row">
+	    <div class="col-md-8">
+    	        {% for publicacion in publicaciones %}
+		    <div class="post">
+			    <div class="date">
+			    <p>Publicado: {{ publicacion.fecha_publicacion }}</p>
+			    </div>
+    			<h2><a href=""> {{publicacion.titulo}} </a> </h2>
+    		        <p> {{ publicacion.texto|linebreaksbr }} </p>
+   			<hr>
+  		    </div>
+   		{% endfor %}
+   	    </div>
+        </div>
+    </div>
 </body>
 </html>

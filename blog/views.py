@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.utils import timezone
 from .models import Publicacion
+from .models import Albumes
 from django.contrib.auth.models import User
 
 #Create your own views here.
@@ -21,3 +22,9 @@ def lista_public(request):
         'usuarios': usuarios,
         'usuario_activo': usuario_activo
 })
+
+def lista_albumes(request):
+    albumes = Albumes.objects.all()
+    return render(request,'blog/lista_albumes.html',
+    {'albumes': albumes})
+    

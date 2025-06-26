@@ -5,34 +5,8 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="{% static 'css/albumes.css' %}">
     <style>
-        .filtro-usuarios {
-            margin: 15px 0;
-            padding: 10px;
-            background: #f0f0f0;
-        }
-        .usuario-filtro {
-            display: inline-block;
-            margin-right: 10px;
-            padding: 5px 10px;
-            background: #e0e0e0;
-            border-radius: 3px;
-        }
-        .usuario-filtro.activo {
-            background: black;
-            color: black;
-        }
-        .limpiar-filtro {
-            display: inline-block;
-            margin-left: 10px;
-            color: #666;
-        }
-        h1 a {
-            color: white; 
-            text-decoration: none; 
-        }
         .album {
             display: flex;
             align-items: flex-start;
@@ -59,8 +33,10 @@
             <div class="col-md-10">
                 {% for album in albumes %}
                     <div class="album">
-                        <!-- Imagen del álbum -->
-                        <img src="{{ album.portada.url }}" alt="Portada de {{ album.nombre }}">
+                        <!-- Imagen de la portada -->
+                                {% if album.portada %}
+                                    <img src="{{ album.portada.url }}" alt="Portada de {{ album.nombre }}">
+                                {% endif %}
 
                         <!-- Contenido del álbum -->
                         <div class="album-content">
@@ -110,4 +86,5 @@
     </div>
 </body>
 </html>
+
 
